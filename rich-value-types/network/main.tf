@@ -17,3 +17,5 @@ resource "aws_subnet" "my_subnet" {
     Name = var.network_config
   }
 }
+
+# Modified [main.tf] on [2021-02-11 11:40:19.960536]
