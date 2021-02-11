@@ -1,0 +1,27 @@
+{
+    "meta": {
+        "matchedPoliciesSummary": {
+            "high": 0,
+            "medium": 1,
+            "low": 0
+        },
+        "errorDetails": []
+    },
+    "data": [
+        {
+            "id": "497f7e2c-b702-47c7-9a07-f0f6404ac896",
+            "attributes": {
+                "severity": "medium",
+                "name": "AWS Customer Master Key (CMK) rotation is not enabled",
+                "rule": "$.resource.aws_kms_key exists and ( $.resource.aws_kms_key[*].enable_key_rotation anyFalse or  $.resource.aws_kms_key[*].enable_key_rotation anyNull)",
+                "desc": "Checks to ensure that CMKs are rotated periodically. AWS KMS (Key Management Service) allows customers to create master keys to encrypt sensitive data in different services. As a security best practice, it is important to rotate the keys periodically so that if the keys are compromised, the data in the underlying service is still secure with the new keys",
+                "files": [
+                    "./multiple-modules/examples/complete/main.tf",
+                    "./multiple-modules/examples/s3-replication/main.tf"
+                ],
+                "policyId": "497f7e2c-b702-47c7-9a07-f0f6404ac896",
+                "docUrl": "http://prisma.fyi/p54"
+            }
+        }
+    ]
+}

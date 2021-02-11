@@ -1,0 +1,15 @@
+template_type: TF
+terraform_version: 0.12
+#terraform_012_parameters:
+
+template_parameters:
+  variable_files:
+  - './terraform12module_variable_files/smelks.tfvars'
+  - './tf12_variable_files/network/smelks.tfvars'
+  variables:
+    cidr: 0.0.0.0/0
+    acl: public-read-write
+    check: public-read-write
+
+tags:
+- pcs-config:tf12_vars

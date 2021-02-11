@@ -1,0 +1,1 @@
+acl_file = "public-read-write"

@@ -1,0 +1,54 @@
+{
+    "meta": {
+        "matchedPoliciesSummary": {
+            "high": 3,
+            "medium": 0,
+            "low": 0
+        },
+        "errorDetails": []
+    },
+    "data": [
+        {
+            "id": "617b9138-584b-4e8e-ad15-7fbabafbed1a",
+            "attributes": {
+                "severity": "high",
+                "name": "AWS Security Groups allow internet traffic to SSH port (22)",
+                "rule": "$.resource.aws_security_group exists and ($.resource.aws_security_group[*].ingress[?( @.protocol == 'tcp' && @.from_port<23 && @.to_port>21 )].cidr_blocks[*] contains 0.0.0.0/0 or $.resource.aws_security_group[*].ingress[?( @.protocol == 'tcp' && @.from_port<23 && @.to_port>21 )].ipv6_cidr_blocks[*] contains ::/0)",
+                "desc": "This policy identifies AWS Security Groups which do allow inbound traffic on SSH port (22) from public internet. Doing so, may allow a bad actor to brute force their way into the system and potentially get access to the entire network.",
+                "files": [
+                    "./ui-integration-examples/0.12-security-group-blocked-ports.tf"
+                ],
+                "policyId": "617b9138-584b-4e8e-ad15-7fbabafbed1a",
+                "docUrl": "http://prisma.fyi/p12"
+            }
+        },
+        {
+            "id": "566686e8-0581-4df5-ae22-5a901ed37b58",
+            "attributes": {
+                "severity": "high",
+                "name": "AWS Security Groups with Inbound rule overly permissive to All Traffic",
+                "rule": "($.resource.aws_security_group exists and ($.resource.aws_security_group[*].ingress[?(@.protocol == 'tcp')].cidr_blocks[*] contains 0.0.0.0/0 or $.resource.aws_security_group[*].ingress[?(@.protocol == 'tcp')].ipv6_cidr_blocks[*] contains ::/0)) or ($.resource.aws_security_group_rule exists and ($.resource.aws_security_group_rule.*[?( @.type == 'ingress' && @.protocol == 'tcp')].cidr_blocks[*] contains 0.0.0.0/0 or $.resource.aws_security_group_rule.*[?( @.type == 'ingress' && @.protocol == 'tcp')].ipv6_cidr_blocks[*] contains ::/0))",
+                "desc": "This policy identifies AWS Security Groups which do allow inbound traffic on all protocols from public internet. Doing so, may allow a bad actor to brute force their way into the system and potentially get access to the entire network.",
+                "files": [
+                    "./ui-integration-examples/0.12-security-group-blocked-ports.tf"
+                ],
+                "policyId": "566686e8-0581-4df5-ae22-5a901ed37b58",
+                "docUrl": "http://prisma.fyi/p80"
+            }
+        },
+        {
+            "id": "630d3779-d932-4fbf-9cce-6e8d793c6916",
+            "attributes": {
+                "severity": "high",
+                "name": "AWS S3 buckets are accessible to public",
+                "rule": "$.resource.aws_s3_bucket exists and ($.resource.aws_s3_bucket[*].acl anyEqual public-read-write or $.resource.aws_s3_bucket[*].acl anyEqual public-read)",
+                "desc": "This policy identifies S3 buckets which are publicly accessible. Amazon S3 allows customers to store or retrieve any type of content from anywhere in the web. Often, customers have legitimate reasons to expose the S3 bucket to public, for example, to host website content. However, these buckets often contain highly sensitive enterprise data which if left open to public may result in sensitive data leaks.",
+                "files": [
+                    "./ui-integration-examples/public-s3.tf"
+                ],
+                "policyId": "630d3779-d932-4fbf-9cce-6e8d793c6916",
+                "docUrl": "http://prisma.fyi/p71"
+            }
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "assetName": "H1_M1_L1_OR",
+    "tags": "",
+    "templateType": "TF",
+    "templateVersion": "0.12",
+    "failureCriteriaHigh": "1",
+    "failureCriteriaMedium": "1",
+    "failureCriteriaLow": "1",
+    "failureCriteriaOperator": "OR"
+  }
+]

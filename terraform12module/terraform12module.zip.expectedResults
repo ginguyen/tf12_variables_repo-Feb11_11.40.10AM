@@ -1,0 +1,40 @@
+{
+    "meta": {
+        "matchedPoliciesSummary": {
+            "high": 1,
+            "medium": 1,
+            "low": 0
+        },
+        "errorDetails": []
+    },
+    "data": [
+        {
+            "id": "630d3779-d932-4fbf-9cce-6e8d793c6916",
+            "attributes": {
+                "severity": "high",
+                "name": "AWS S3 buckets are accessible to public",
+                "rule": "$.resource.aws_s3_bucket exists and ($.resource.aws_s3_bucket[*].acl anyEqual public-read-write or $.resource.aws_s3_bucket[*].acl anyEqual public-read)",
+                "desc": "This policy identifies S3 buckets which are publicly accessible. Amazon S3 allows customers to store or retrieve any type of content from anywhere in the web. Often, customers have legitimate reasons to expose the S3 bucket to public, for example, to host website content. However, these buckets often contain highly sensitive enterprise data which if left open to public may result in sensitive data leaks.",
+                "files": [
+                    "./terraform12module/main.tf"
+                ],
+                "policyId": "630d3779-d932-4fbf-9cce-6e8d793c6916",
+                "docUrl": "http://prisma.fyi/p71"
+            }
+        },
+        {
+            "id": "89ea62c1-3845-4134-b337-cc82203b8ff9",
+            "attributes": {
+                "severity": "medium",
+                "name": "AWS S3 Object Versioning is disabled",
+                "rule": " $.resource.aws_s3_bucket exists and ($.resource.aws_s3_bucket[*].versioning.enabled does not exist or $.resource.aws_s3_bucket[*].versioning.enabled anyFalse)",
+                "desc": "This policy identifies the S3 buckets which have Object Versioning disabled. S3 Object Versioning is an important capability in protecting your data within a bucket. Once you enable Object Versioning, you cannot remove it; you can suspend Object Versioning at any time on a bucket if you do not wish for it to persist. It is recommended to enable Object Versioning on S3.",
+                "files": [
+                    "./terraform12module/main.tf"
+                ],
+                "policyId": "89ea62c1-3845-4134-b337-cc82203b8ff9",
+                "docUrl": "http://prisma.fyi/p69"
+            }
+        }
+    ]
+}
