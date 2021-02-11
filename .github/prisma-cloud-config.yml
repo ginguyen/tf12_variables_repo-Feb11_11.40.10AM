@@ -18,6 +18,6 @@ failure_criteria_for_creating_issues:
 github_asset_name: "Github Asset Dev"
 
 # Define tags
-tags: 
-- github-config:tf12_vars
-- user:automation_tf12variables
+# tags: 
+# - github-config:tf12_vars
+# - user:automation_tf12variables
