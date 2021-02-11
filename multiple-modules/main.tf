@@ -252,3 +252,5 @@ data "aws_iam_policy_document" "elb_log_delivery" {
     ]
   }
 }
+
+# Modified [main.tf] on [2021-02-11 11:40:30.659816]
