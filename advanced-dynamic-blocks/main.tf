@@ -21,3 +21,5 @@ resource "aws_elastic_beanstalk_environment" "tfenvtest" {
     }
   }
 }
+
+# Modified [main.tf] on [2021-02-11 11:40:38.102933]
