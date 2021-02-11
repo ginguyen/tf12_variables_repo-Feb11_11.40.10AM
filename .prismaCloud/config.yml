@@ -1,5 +1,5 @@
 template_type: TF
-terraform_version2: 0.10
+# terraform_version2: 0.10
 #terraform_012_parameters:
 
 # template_parameters:
